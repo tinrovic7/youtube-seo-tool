@@ -60,7 +60,7 @@ button:hover {
 
 #results {
     margin-top: 20px;
-    display: none; /* Hidden until results are displayed */
+    display: none;
 }
 
 #results h2 {
