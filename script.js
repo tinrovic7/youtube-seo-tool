@@ -1,11 +1,14 @@
 document.getElementById('keyword-form').addEventListener('submit', function (event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent form submission
+    console.log("Form submitted."); // Debugging log
 
     const keyword = document.getElementById('keyword').value.trim();
     if (!keyword) {
         alert('Please enter a keyword.');
         return;
     }
+
+    console.log(`Keyword entered: ${keyword}`); // Debugging log
 
     // Sample data
     const sampleData = [
@@ -16,13 +19,22 @@ document.getElementById('keyword-form').addEventListener('submit', function (eve
         { keyword: `${keyword} tutorials`, searchVolume: '15,000', competition: 'Medium' }
     ];
 
+    console.log("Sample data generated:", sampleData); // Debugging log
+
     displayResults(sampleData);
 });
 
 function displayResults(data) {
     const resultsTable = document.querySelector('#results-table tbody');
+
+    if (!resultsTable) {
+        console.error("Results table element not found."); // Debugging log
+        return;
+    }
+
     resultsTable.innerHTML = ''; // Clear previous results
 
+    // Populate table with data
     data.forEach(({ keyword, searchVolume, competition }) => {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -32,6 +44,8 @@ function displayResults(data) {
         `;
         resultsTable.appendChild(row);
     });
+
+    console.log("Results displayed in table."); // Debugging log
 
     // Show the results section
     document.getElementById('results').style.display = 'block';
